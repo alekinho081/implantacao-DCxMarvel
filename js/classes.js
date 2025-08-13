@@ -1,5 +1,5 @@
 class Cliente {
-    constructor(user, senha, nome, sobrenome, CPF, telefone, endereco, formPag) {
+    constructor(user, senha, nome, sobrenome, CPF, telefone, endereco, formPag, tipo) {
         this.user = user,
             this.senha = senha,
             this.nome = nome,
@@ -7,12 +7,10 @@ class Cliente {
             this.CPF = CPF,
             this.telefone = telefone,
             this.endereco = endereco,
-            this.formPag = formPag
-    }
-
-    criaLogin() {
-
-    }
+            this.formPag = formPag,
+            this.tipo = tipo
+        
+        }
 }
 
 class Produto {

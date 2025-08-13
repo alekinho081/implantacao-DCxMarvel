@@ -3,83 +3,46 @@ let article, div, div2, h3, p1, input, p2, span, aLink, main, section, footer, h
 let usr = []
 let snh = []
 let produto = []
-if(localStorage.prodArr){
+if (localStorage.prodArr) {
     produto = JSON.parse(localStorage.getItem('prodArr'))
 }
 let cod = []
-if(localStorage.codArr){
+if (localStorage.codArr) {
     cod = JSON.parse(localStorage.getItem('codArr'))
 }
 let preco = []
-if(localStorage.precoArr){
+if (localStorage.precoArr) {
     preco = JSON.parse(localStorage.getItem('precoArr'))
 }
 let link = []
-if(localStorage.linkArr){
+if (localStorage.linkArr) {
     link = JSON.parse(localStorage.getItem('linkArr'))
 }
 let descricao = []
-if(localStorage.descArr){
+if (localStorage.descArr) {
     descricao = JSON.parse(localStorage.getItem('descArr'))
 }
 let qtd = []
-if(localStorage.qtdArr){
+if (localStorage.qtdArr) {
     qtd = JSON.parse(localStorage.getItem('qtdArr'))
 }
 let totalCompra = []
-if(localStorage.totCompArr){
+if (localStorage.totCompArr) {
     totalCompra = JSON.parse(localStorage.getItem('totCompArr'))
 }
-function criaLogin(){
-    if(localStorage.usrArr){
-        usr = JSON.parse(localStorage.getItem('usrArr')) //JSON - Javascript Object Notation: podem ser representados em forma de String e utilizaos em outas linguagens.
-    }
-    if(localStorage.snhArr){
-        snh = JSON.parse(localStorage.getItem('snhArr'))
-    }
-    let novoUsr = prompt("login:")
-    usr.push(novoUsr)
-    localStorage.usrArr = JSON.stringify(usr)
-    let novaSnh = prompt("senha:")
-    snh.push(novaSnh)
-    localStorage.snhArr = JSON.stringify(snh)
-    if(usr.includes(novoUsr) && snh.includes(novaSnh)){
-        alert("Login criado com sucesso!")
-    }else{
-        alert("Login não pode ser criado!")
-    }
-}
 
-function abreTelaLogin(){
-    if(localStorage.usrArr){
-        usr = JSON.parse(localStorage.getItem('usrArr'))
-    }
-    if(localStorage.snhArr){
-        snh = JSON.parse(localStorage.getItem('snhArr'))
-    }
-    login = prompt("login:")
-    senha =  prompt("senha:")
-    let indUsr = usr.indexOf(login)
-    if(usr[indUsr] == login && snh[indUsr] == senha){
-        localStorage.setItem('loginAutenticado', login)
-        loginAut = localStorage.getItem('loginAutenticado')
-        document.getElementById("log").innerHTML = `Bem-vindo, ${loginAut}`
-    }else{
-        alert("Digite um usuário/senha válidos!\nOu crie um login no link ao lado")
-    }
-}
-function getDados(){
-    if(localStorage.qtdArr){
+function getDados() {
+    if (localStorage.qtdArr) {
         qtd = JSON.parse(localStorage.getItem('qtdArr'))
     }
     //qtd.push(0)
     localStorage.qtdArr = JSON.stringify(qtd)
-    if(localStorage.totCompArr){
+    if (localStorage.totCompArr) {
         totalCompra = JSON.parse(localStorage.getItem('totCompArr'))
     }
     //totalCompra.push(0)
     localStorage.totCompArr = JSON.stringify(totalCompra)
-    if(localStorage.prodArr){
+    if (localStorage.prodArr) {
         produto = JSON.parse(localStorage.getItem('prodArr'))
     }
     let prod = document.getElementById('produto').value
@@ -87,7 +50,7 @@ function getDados(){
     localStorage.prodArr = JSON.stringify(produto)
     document.getElementById('produto').value = ''
 
-    if(localStorage.descArr){
+    if (localStorage.descArr) {
         descricao = JSON.parse(localStorage.getItem('descArr'))
     }
     let descri = document.getElementById('descricao').value
@@ -95,23 +58,23 @@ function getDados(){
     localStorage.descArr = JSON.stringify(descricao)
     document.getElementById('descricao').value = ''
 
-    if(localStorage.codArr){
+    if (localStorage.codArr) {
         cod = JSON.parse(localStorage.getItem('codArr'))
     }
     let codig = document.getElementById('codigo').value
     cod.push(codig)
     localStorage.codArr = JSON.stringify(cod)
-    document.getElementById('codigo').value = ''    
+    document.getElementById('codigo').value = ''
 
-    if(localStorage.precoArr){
+    if (localStorage.precoArr) {
         preco = JSON.parse(localStorage.getItem('precoArr'))
     }
     let prec = document.getElementById('preco').value
-    preco.push(parseFloat(prec.replace(',' , '.')))
+    preco.push(parseFloat(prec.replace(',', '.')))
     localStorage.precoArr = JSON.stringify(preco)
     document.getElementById('preco').value = ''
 
-    if(localStorage.linkArr){
+    if (localStorage.linkArr) {
         link = JSON.parse(localStorage.getItem('linkArr'))
     }
     let lnk = document.getElementById('linkAmazon').value
@@ -123,14 +86,14 @@ function getDados(){
 }
 
 
-function montaHTML(){ //********************************************************** */
+function montaHTML() { //********************************************************** */
     main = document.createElement('main')
     main.setAttribute('class', 'container')
     document.body.append(main)
     section = document.createElement('section')
     section.setAttribute('class', 'products-container')
     main.append(section)
-    for(i in produto){
+    for (i in produto) {
         article = document.createElement('article')
         article.setAttribute('class', 'card')
         section.append(article)
@@ -165,7 +128,7 @@ function montaHTML(){ //********************************************************
         p2.append(span)
         article.append(p2)
         aLink = document.createElement('a')
-        aLink.setAttribute('onclick', "compra(" + "'" + 'qtd-' + i + "'" + ',' + "'" + cod[i] + "'"  +  ',' + i + ")")
+        aLink.setAttribute('onclick', "compra(" + "'" + 'qtd-' + i + "'" + ',' + "'" + cod[i] + "'" + ',' + i + ")")
         aLink.setAttribute('class', 'btn')
         aLink.setAttribute('href', 'http://www.amazon.com.br/' + link[i])
         aLink.setAttribute('target', '_blank')
@@ -190,19 +153,19 @@ function montaHTML(){ //********************************************************
     footer.append(aLink2)
     p3.append(span2)
     let logA = localStorage.getItem('loginAutenticado')
-    if(logA == "null" || logA == "undefined"){
+    if (logA == "null" || logA == "undefined") {
         document.getElementById("log").innerHTML = 'login'
-    }else{
+    } else {
         document.getElementById("log").innerHTML = `Bem-vindo, ${localStorage.getItem('loginAutenticado')}`
     }
 }  //********************************************************** */
 
 
 
-function compra(qtdId, produt, posArr){
-    if(localStorage.posArr){
+function compra(qtdId, produt, posArr) {
+    if (localStorage.posArr) {
         qtd[posArr] = parseInt(document.getElementById(qtdId).value)
-    }else{
+    } else {
         localStorage.posArr = JSON.stringify(qtd)
     }
     totalCompra[posArr] = qtd[posArr] * parseFloat(document.getElementById(produt).innerText.replace(",", "."))
@@ -211,33 +174,33 @@ function compra(qtdId, produt, posArr){
     localStorage.setItem('produtoIndividual', produto[posArr])
     localStorage.setItem('descricaoIndividual', descricao[posArr])
     let url_atual = window.location.href
-    if(url_atual != "http://127.0.0.1:5500/produto.html" && url_atual != "http://127.0.0.1:5500/produto.html#"){
+    if (url_atual != "http://127.0.0.1:5500/produto.html" && url_atual != "http://127.0.0.1:5500/produto.html#") {
         window.location.href = "/produto.html"
     }
     alert("Produto adicionado no carrinho!")
 }
 
-function abreLink(posArr){
+function abreLink(posArr) {
     localStorage.setItem('produtoIndividual', produto[posArr])
     localStorage.setItem('descricaoIndividual', descricao[posArr])
     let url_atual = window.location.href
-    if(url_atual != "http://127.0.0.1:5500/produto.html" && url_atual != "http://127.0.0.1:5500/produto.html#"){
+    if (url_atual != "http://127.0.0.1:5500/produto.html" && url_atual != "http://127.0.0.1:5500/produto.html#") {
         window.location.href = "/produto.html"
     }
 }
 
-function calculaCesta(){
+function calculaCesta() {
     usr = JSON.parse(localStorage.getItem('usrArr'))
     loginAut = localStorage.getItem('loginAutenticado')
-    if(usr.includes(loginAut)){
+    if (usr.includes(loginAut)) {
         let textoCarrinho = ''
-        for(i in qtd){
-            if(qtd[i] > 0){
+        for (i in qtd) {
+            if (qtd[i] > 0) {
                 totalGeral += totalCompra[i]
                 textoCarrinho += qtd[i] + " x " + preco[i].toFixed(2).replace('.', ',') + " - Boneco " + produto[i] + " R$ " + totalCompra[i].toFixed(2).replace('.', ',') + "\n"
             }
         }
-        if(totalGeral > 0){ //Apenas se houver alguma quantidade no carrinho
+        if (totalGeral > 0) { //Apenas se houver alguma quantidade no carrinho
             alert(`${textoCarrinho}
                 _______________________________________________________________
                 Total da compra                            R$ ${totalGeral.toFixed(2).replace('.', ',')}
@@ -245,7 +208,7 @@ function calculaCesta(){
             let text = "Confirme ou cancele sua compra!\nPressione OK para comprar ou Cancelar para desistir da compra.";
             if (confirm(text) == true) {
                 alert("Compra efetuada com sucesso!");
-                for(i in qtd){
+                for (i in qtd) {
                     qtd[i] = 0
                 }
                 localStorage.qtdArr = JSON.stringify(qtd)
@@ -254,15 +217,15 @@ function calculaCesta(){
                 alert("Sua compra não foi realizada!");
                 totalGeral = 0
             }
-        }else{
+        } else {
             alert("Seu carrinho está vazio!")
         }
-    }else{
+    } else {
         alert("Você não está logado!")
     }
 }
 /***************************************************************************** */
-function carregaProduto(){
+function carregaProduto() {
     let produtoCompra = localStorage.getItem('produtoIndividual')
     let descCompra = localStorage.getItem('descricaoIndividual')
     let pos = produto.indexOf(produtoCompra)
@@ -292,20 +255,20 @@ function carregaProduto(){
     p2.append(span)
     div2.append(p2)
     aLink = document.createElement('a')
-    aLink.setAttribute('onclick', "compra(" + "'" + 'qtd-' + pos + "'" + ',' + "'" + cod[pos] + "'"  +  ',' + pos + ")")
+    aLink.setAttribute('onclick', "compra(" + "'" + 'qtd-' + pos + "'" + ',' + "'" + cod[pos] + "'" + ',' + pos + ")")
     aLink.setAttribute('class', 'btn')
     aLink.setAttribute('href', '#')
     aLink.innerHTML = 'Comprar'
     div2.append(aLink)
     let logB = localStorage.getItem('loginAutenticado')
-    if(logB == "null" || logB == "undefined"){
+    if (logB == "null" || logB == "undefined") {
         document.getElementById("log").innerHTML = 'login'
-    }else{
+    } else {
         document.getElementById("log").innerHTML = `Bem-vindo, ${localStorage.getItem('loginAutenticado')}`
     }
 }
 
-function getDadosClientes(){
+function getDadosClientes() {
     var select = document.getElementById("uf");
     var opcaoTexto = select.options[select.selectedIndex].text;
     var opcaoValor = select.options[select.selectedIndex].value;
@@ -315,10 +278,10 @@ function getDadosClientes(){
     senha = document.getElementById("senha").value
     nome = document.getElementById("nome").value
     const dadosCliente = {
-        email : email,
-        senha : senha,
-        nome : nome
+        email: email,
+        senha: senha,
+        nome: nome
     }
-alert(`${dadosCliente.email}, ${dadosCliente.senha}, ${nome}`)
+    alert(`${dadosCliente.email}, ${dadosCliente.senha}, ${nome}`)
 }
 /***************************************************************************** */
