@@ -1,2 +1,1 @@
 # implantacao-DCxMarvel
-# implantacao-DCxMarvel
