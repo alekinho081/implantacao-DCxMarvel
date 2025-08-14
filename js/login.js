@@ -1,5 +1,6 @@
 let clientes = JSON.parse(localStorage.getItem('clientes')) || []
 
+
 function criaLogin(event) {
     event.preventDefault()
     let email = document.getElementById('email').value
@@ -29,6 +30,7 @@ function loginConta(event){
     for (let cliente of clientes) {
         if ((cliente.user === login || cliente.email === login) && cliente.senha === senha) {
             alert('Logado com sucesso');
+            localStorage.setItem('loginAutenticado', cliente.nome)
             window.location.href = 'index.html';
             clienteEncontrado = true;
             return; 
