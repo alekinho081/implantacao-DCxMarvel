@@ -3,10 +3,6 @@ let article, div, div2, h3, p1, input, p2, span, aLink, main, section, footer, h
 
 let produtos = JSON.parse(localStorage.getItem('prods')) || []
 
-
-que id tu vai deicar nos boteos
-
-
 function criaProduto(){
     let nome = document.getElementById('produto').value
     let cod = document.getElementById('codigo').value
