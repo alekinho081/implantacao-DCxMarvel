@@ -1,90 +1,23 @@
 let login = '', senha, qtdCont = 0, valor = 0, totalGeral = 0, cesta, loginAut
 let article, div, div2, h3, p1, input, p2, span, aLink, main, section, footer, h2, p3, span2, aLink2
-let usr = []
-let snh = []
-let produto = []
-if (localStorage.prodArr) {
-    produto = JSON.parse(localStorage.getItem('prodArr'))
-}
-let cod = []
-if (localStorage.codArr) {
-    cod = JSON.parse(localStorage.getItem('codArr'))
-}
-let preco = []
-if (localStorage.precoArr) {
-    preco = JSON.parse(localStorage.getItem('precoArr'))
-}
-let link = []
-if (localStorage.linkArr) {
-    link = JSON.parse(localStorage.getItem('linkArr'))
-}
-let descricao = []
-if (localStorage.descArr) {
-    descricao = JSON.parse(localStorage.getItem('descArr'))
-}
-let qtd = []
-if (localStorage.qtdArr) {
-    qtd = JSON.parse(localStorage.getItem('qtdArr'))
-}
-let totalCompra = []
-if (localStorage.totCompArr) {
-    totalCompra = JSON.parse(localStorage.getItem('totCompArr'))
-}
 
-function getDados() {
-    if (localStorage.qtdArr) {
-        qtd = JSON.parse(localStorage.getItem('qtdArr'))
-    }
-    //qtd.push(0)
-    localStorage.qtdArr = JSON.stringify(qtd)
-    if (localStorage.totCompArr) {
-        totalCompra = JSON.parse(localStorage.getItem('totCompArr'))
-    }
-    //totalCompra.push(0)
-    localStorage.totCompArr = JSON.stringify(totalCompra)
-    if (localStorage.prodArr) {
-        produto = JSON.parse(localStorage.getItem('prodArr'))
-    }
-    let prod = document.getElementById('produto').value
-    produto.push(prod)
-    localStorage.prodArr = JSON.stringify(produto)
-    document.getElementById('produto').value = ''
+let produtos = JSON.parse(localStorage.getItem('prods')) || []
 
-    if (localStorage.descArr) {
-        descricao = JSON.parse(localStorage.getItem('descArr'))
-    }
-    let descri = document.getElementById('descricao').value
-    descricao.push(descri)
-    localStorage.descArr = JSON.stringify(descricao)
-    document.getElementById('descricao').value = ''
 
-    if (localStorage.codArr) {
-        cod = JSON.parse(localStorage.getItem('codArr'))
-    }
-    let codig = document.getElementById('codigo').value
-    cod.push(codig)
-    localStorage.codArr = JSON.stringify(cod)
-    document.getElementById('codigo').value = ''
+que id tu vai deicar nos boteos
 
-    if (localStorage.precoArr) {
-        preco = JSON.parse(localStorage.getItem('precoArr'))
-    }
-    let prec = document.getElementById('preco').value
-    preco.push(parseFloat(prec.replace(',', '.')))
-    localStorage.precoArr = JSON.stringify(preco)
-    document.getElementById('preco').value = ''
 
-    if (localStorage.linkArr) {
-        link = JSON.parse(localStorage.getItem('linkArr'))
-    }
-    let lnk = document.getElementById('linkAmazon').value
-    link.push(lnk)
-    localStorage.linkArr = JSON.stringify(link)
-    document.getElementById('linkAmazon').value = ''
+function criaProduto(){
+    let nome = document.getElementById('produto').value
+    let cod = document.getElementById('codigo').value
+    let preco = document.getElementById('preco').value
+    let desc = document.getElementById('descricao').value
 
-    alert("Dados inseridos com Sucesso!")
+    let produto = new Produto(nome, cod, preco, desc)
+    produtos.push(produto)
+
+    localStorage.setItem('prods', JSON.stringify(produtos) )
 }
-
 
 function montaHTML() { //********************************************************** */
     main = document.createElement('main')

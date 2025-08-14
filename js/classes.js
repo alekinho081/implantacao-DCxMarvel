@@ -1,6 +1,7 @@
 class Cliente {
-    constructor(user, senha, nome, sobrenome, CPF, telefone, endereco, formPag, tipo) {
+    constructor(user, senha, email, nome, sobrenome, CPF, telefone, endereco, formPag, tipo) {
         this.user = user,
+            this.email = email,
             this.senha = senha,
             this.nome = nome,
             this.sobrenome = sobrenome,
@@ -9,16 +10,15 @@ class Cliente {
             this.endereco = endereco,
             this.formPag = formPag,
             this.tipo = tipo
-        
-        }
+
+    }
 }
 
 class Produto {
-    constructor(nome, cod, preco, link, descricao) {
+    constructor(nome, cod, preco, descricao) {
         this.nome = nome,
             this.cod = cod,
             this.preco = preco,
-            this.link = link,
             this.descricao = descricao
     }
 
@@ -26,3 +26,4 @@ class Produto {
         return this
     }
 }
+
