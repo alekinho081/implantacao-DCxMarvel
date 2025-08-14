@@ -17,7 +17,7 @@ function criaProduto(){
 
 function montaHTML() {
     // Recupera o array de produtos do localStorage ou usa um array vazio como fallback
-    const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+    const produtos = JSON.parse(localStorage.getItem('prods')) || [];
 
     main = document.createElement('main');
     main.setAttribute('class', 'container');
