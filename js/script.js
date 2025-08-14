@@ -116,4 +116,3 @@ function adicionarAoCarrinho(index){
 
     localStorage.setItem('carrinho', produtosCarrinho)
 
-}
