@@ -1,19 +1,82 @@
-.div-cadastro1{
-    display: block;
-    background-color: lightgrey;
-    width: 300px;
-    border: 15px solid green;
-    padding: 50px;
-    margin: 20px;
+body{
+    background-color: rgb(207, 184, 154);
 }
 
-.div-cadastro2{
-    display: none;
-    background-color: lightgrey;
-    width: 300px;
-     border: 15px solid green;
-    padding: 50px;
-    margin: 20px;
+.div-cadastro1,
+.div-cadastro2 {
+  width: 500px;
+  height: 500px; 
+  position: absolute;
+  top: 220px;
+  background-color: lightgrey;
+  border: 15px solid green;
+  padding: 50px; 
+  box-sizing: border-box; 
+}
+
+.div-cadastro1 {
+  left: 200px;
+  display: block;
+}
+
+.div-cadastro2 {
+  display: none;
+  left: 200px;
+}
+
+@keyframes moveRight {
+  from {
+    left: 200px;
+  }
+  to {
+    left: calc(100vw - 500px - 250px);
+  }
 }
 
 
+.div-cadastro2.animar {
+  display: block;
+  animation: moveRight 1s forwards ease;
+}
+  
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 4px;
+}
+
+#button-cadastro {
+  background-color: #04aa6d; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  border-radius: 4px;
+}
+
+#button-cadastro2{
+    background-color: #04aa6d; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  border-radius: 4px;
+}
