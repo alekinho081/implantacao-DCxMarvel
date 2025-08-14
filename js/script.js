@@ -215,6 +215,34 @@ function carregaProduto() {
     }
 }
 
+function renderizarItens() {
+    const container = document.getElementById("lista-produto");
+    container.innerHTML = '';
+  
+    produtos.forEach((produto, index) => {
+      const divItem = document.createElement("div");
+      divItem.classList.add("produto");
+  
+      const span = document.createElement("span");
+      span.textContent = produto.nome;
+  
+      const btn = document.createElement("button");
+      btn.textContent = "Delete";
+      btn.onclick = () => deletarProduto(index);
+  
+      divItem.appendChild(span);
+      divItem.appendChild(btn);
+      container.appendChild(divItem);
+    });
+  }
+  
+  function deletarProduto(index) {
+    produtos.splice(index, 1);  
+    renderizarItens();        
+  }
+
+
+
 function getDadosClientes() {
     var select = document.getElementById("uf");
     var opcaoTexto = select.options[select.selectedIndex].text;
@@ -232,3 +260,4 @@ function getDadosClientes() {
     alert(`${dadosCliente.email}, ${dadosCliente.senha}, ${nome}`)
 }
 /***************************************************************************** */
+
