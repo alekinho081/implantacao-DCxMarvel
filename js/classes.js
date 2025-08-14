@@ -13,11 +13,12 @@ class Cliente {
 }
 
 class Produto {
-    constructor(nome, cod, preco, descricao) {
+    constructor(nome, cod, preco, descricao, imagem) {
         this.nome = nome,
             this.cod = cod,
             this.preco = preco,
-            this.descricao = descricao
+            this.descricao = descricao,
+            this.imagem = imagem
     }
 
     getDados() {
