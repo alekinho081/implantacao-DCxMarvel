@@ -1,40 +1,45 @@
-function criaLogin() {
-    if (localStorage.usrArr) {
-        usr = JSON.parse(localStorage.getItem('usrArr')) //JSON - Javascript Object Notation: podem ser representados em forma de String e utilizaos em outas linguagens.
-    }
-    if (localStorage.snhArr) {
-        snh = JSON.parse(localStorage.getItem('snhArr'))
-    }
-    let novoUsr = prompt("login:")
-    usr.push(novoUsr)
-    localStorage.usrArr = JSON.stringify(usr)
-    let novaSnh = prompt("senha:")
-    snh.push(novaSnh)
-    localStorage.snhArr = JSON.stringify(snh)
-    if (usr.includes(novoUsr) && snh.includes(novaSnh)) {
-        alert("Login criado com sucesso!")
-    } else {
-        alert("Login não pode ser criado!")
-    }
+let clientes = JSON.parse(localStorage.getItem('clientes')) || []
+
+
+function criaLogin(event) {
+    event.preventDefault()
+    let email = document.getElementById('email').value
+    let user = document.getElementById('username').value
+    let senha = document.getElementById('password').value
+    let nome = document.getElementById('nome').value
+    let sobrenome = document.getElementById('sobrenome').value
+    let CPF = document.getElementById('cpf').value
+    let telefone = document.getElementById('telefone').value
+    let endereco = document.getElementById('endereco').value
+
+    let novoCliente = new Cliente(user, senha, email, nome, sobrenome, CPF, telefone, endereco)
+    clientes.push(novoCliente)
+
+    window.location.href = 'login.html';
+    localStorage.setItem('clientes', JSON.stringify(clientes))
 }
 
-function abreTelaLogin() {
-    if (localStorage.usrArr) {
-        usr = JSON.parse(localStorage.getItem('usrArr'))
-    }
-    if (localStorage.snhArr) {
-        snh = JSON.parse(localStorage.getItem('snhArr'))
-    }
-    login = prompt("login:")
-    senha = prompt("senha:")
-    let indUsr = usr.indexOf(login)
-    if (usr[indUsr] == login && snh[indUsr] == senha) {
-        localStorage.setItem('loginAutenticado', login)
-        loginAut = localStorage.getItem('loginAutenticado')
-        document.getElementById("log").innerHTML = `Bem-vindo, ${loginAut}`
-    } else {
-        alert("Digite um usuário/senha válidos!\nOu crie um login no link ao lado")
-    }
-}
+function loginConta(event){
+    event.preventDefault()
 
-module.exports = {abreTelaLogin, criaLogin}
+    let login = document.getElementById('login').value
+    let senha = document.getElementById('password').value
+
+    let clienteEncontrado = false;
+    
+    for (let cliente of clientes) {
+        if ((cliente.user === login || cliente.email === login) && cliente.senha === senha) {
+            alert('Logado com sucesso');
+            localStorage.setItem('loginAutenticado', cliente.nome)
+            window.location.href = 'index.html';
+            clienteEncontrado = true;
+            return; 
+        }
+    }
+
+    if(!clienteEncontrado){
+        alert('Login ou senha incorretos')
+    }
+
+
+}

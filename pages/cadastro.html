@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/cadStyle.css">
     <title>Document</title>
+   
   </head>
   <body>
     <div id="div1" class="div-cadastro1">
@@ -21,22 +22,23 @@
 
     <div id="div2" class="div-cadastro2">
       <section class="section2">
-        <form onsubmit="" class="form-cadastro2">
-          <input type="text" id="name" placeholder="Nome" required />
-          <input type="text" id="last-name" placeholder="Sobrenome" required />
-          <input type="text" id="cpf" placeholder="CPF" required />
-          <input type="text" id="phone-number" placeholder="Telefone" required />
-          <input type="text" id="adress" placeholder="Endereço" required />
-          
-          <button id="button-cadastro2" type="submit">Finalizar</button>
+
+        <form class="form-cadastro2" onsubmit="criaLogin(event)">
+          <input id="nome" placeholder="Nome" required />
+          <input id="sobrenome" placeholder="Sobrenome" required />
+          <input id="cpf" placeholder="CPF" required />
+          <input id="telefone" placeholder="Telefone" required />
+          <input id="endereco" placeholder="Endereço" required />
+          <button type="submit">Finalizar</button>
         </form>
       </section>
     </div>
   </body>
+
   <script defer>
-    const div1 = document.getElementById('div1');
-    const div2 = document.getElementById('div2');
-  
+    const div1 = document.getElementById('div1')
+    const div2 = document.getElementById('div2')
+
     function proximaEtapa(event) {
       event.preventDefault();
   
@@ -49,4 +51,7 @@
       });
     }
   </script>
+  <script src="../js/login.js"></script>
+  <script src="../js/classes.js" defer></script>
+
 </html>
