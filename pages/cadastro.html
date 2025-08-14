@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../implantacao-DCxMarvel/css/cadStyle.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="div1" class="div-cadastro1">
+      <section class="section1">
+        <form onsubmit="proximaEtapa(event)" class="form-cadastro1">
+          <input id="email" placeholder="Usuario" required />
+          <input id="username" placeholder="Email" required />
+          <input id="password" placeholder="Senha" required />
+
+          <button type="submit">Avançar</button>
+        </form>
+      </section>
+    </div>
+
+    <div id="div2" class="div-cadastro2">
+      <section class="section2">
+        <form class="form-cadastro2">
+          <input id="name" placeholder="Nome" required />
+          <input id="last-name" placeholder="Sobrenome" required />
+          <input id="cpf" placeholder="CPF" required />
+          <input id="phone-number" placeholder="Telefone" required />
+          <input id="adress" placeholder="Endereço" required />
+        
+        </form>
+      </section>
+    </div>
+  </body>
+  <script defer>
+    const div1 = document.getElementById('div1')
+    const div2 = document.getElementById('div2')
+
+    function proximaEtapa(event) {
+        event.preventDefault()
+        if (window.getComputedStyle(div2).display === "none"){
+            div1.style.display = "none"
+            div2.style.display = "block"
+        }
+    }
+
+</script>
+</html>
