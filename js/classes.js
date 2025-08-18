@@ -1,5 +1,5 @@
 class Cliente {
-    constructor(user, senha, email, nome, sobrenome, CPF, telefone, endereco) {
+    constructor(user, senha, email, nome, sobrenome, CPF, telefone, endereco, tipo) {
         this.user = user,
             this.email = email,
             this.senha = senha,
@@ -8,7 +8,7 @@ class Cliente {
             this.CPF = CPF,
             this.telefone = telefone,
             this.endereco = endereco
-
+            this.tipo = tipo || 'Aluno'
     }
 }
 
