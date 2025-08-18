@@ -31,6 +31,7 @@ function loginConta(event){
         if ((cliente.user === login || cliente.email === login) && cliente.senha === senha) {
             alert('Logado com sucesso');
             localStorage.setItem('loginAutenticado', cliente.nome)
+            localStorage.setItem('clienteTipo', cliente.tipo)
             window.location.href = 'index.html';
             clienteEncontrado = true;
             return; 
