@@ -111,7 +111,7 @@ function montaHTML() {
 
 
     let logA = localStorage.getItem('loginAutenticado');
-    if (logA == "null" || logA == "undefined") {
+    if (logA == "null" || logA == "undefined" || logA == null || undefined) {
         document.getElementById("log").innerHTML = 'login';
     } else {
         document.getElementById("log").innerHTML = `Bem-vindo, ${localStorage.getItem('loginAutenticado')}`;
