@@ -511,3 +511,46 @@ function removerItem(codigo) {
         console.error("Erro ao remover item:", e);
     }
 }
+
+function carregarProdutos() { // Funcao para carregar produtos na pagina adm
+
+  let produtos = JSON.parse(localStorage.getItem("prods")) || [];
+
+
+  let listaDiv = document.getElementById("lista-produto");
+
+  listaDiv.innerHTML = '<button onclick="carregarProdutos()">Carregar Produtos</button><br><br>';
+
+  if (produtos.length === 0) {
+    listaDiv.innerHTML += "<p>Nenhum produto cadastrado.</p>";
+    return;
+  }
+
+
+  produtos.forEach((p, index) => {
+    let item = document.createElement("div");
+    item.style.marginBottom = "10px";
+
+    let nome = document.createElement("span");
+    nome.textContent = p.nome || p.produto;
+
+    let btn = document.createElement("button");
+    btn.textContent = "Deletar";
+    btn.style.marginLeft = "10px";
+
+    btn.onclick = function () {
+      deletarProduto(index);
+    };
+
+    item.appendChild(nome);
+    item.appendChild(btn);
+    listaDiv.appendChild(item);
+  });
+}
+
+function deletarProduto(indice) {
+  let produtos = JSON.parse(localStorage.getItem("prods")) || [];
+  produtos.splice(indice, 1);
+  localStorage.setItem("prods", JSON.stringify(produtos));
+  carregarProdutos();
+}
