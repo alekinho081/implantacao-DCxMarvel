@@ -209,12 +209,10 @@ function mostrarCarrinho() {
     const itens = getCarrinhoUsuario();
     const container = document.getElementById('carrinho') || criarContainerCarrinho();
 
-    // Configuração da animação
     container.style.transition = 'all 0.3s ease';
     container.style.opacity = '0';
     container.style.transform = 'translateX(20px)';
 
-    // Força o reflow para garantir que a animação funcione
     void container.offsetWidth;
 
     if (itens.length === 0) {
@@ -275,13 +273,11 @@ function mostrarCarrinho() {
         </div>`;
 
     container.innerHTML = html;
-
-    // Anima a aparecimento
+ 
     container.style.opacity = '1';
     container.style.transform = 'translateX(0)';
 }
 
-// Atualize a função finalizarCompra para pegar o método selecionado
 function finalizarCompra() {
     const itens = getCarrinhoUsuario();
     if (itens.length === 0) {
@@ -292,20 +288,19 @@ function finalizarCompra() {
     const metodoPagamento = document.getElementById('metodo-pagamento').value;
     const metodoTexto = document.getElementById('metodo-pagamento').options[document.getElementById('metodo-pagamento').selectedIndex].text;
 
-    // Aqui você pode adicionar a lógica específica para cada método de pagamento
     alert(`Compra finalizada com ${metodoTexto}!`);
 
-    // Limpa o carrinho após finalizar
+
     const usuario = localStorage.getItem('loginAutenticado');
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     carrinho = carrinho.filter(item => item.usuario !== usuario);
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
-    // Fecha o carrinho
+ 
     fecharCarrinho();
 }
 
-// Atualize os estilos para incluir o novo elemento
+
 function adicionarEstilosCarrinho() {
     const style = document.createElement('style');
     style.textContent = `
@@ -512,7 +507,7 @@ function removerItem(codigo) {
     }
 }
 
-function carregarProdutos() { // Funcao para carregar produtos na pagina adm
+function carregarProdutos() { 
 
   let produtos = JSON.parse(localStorage.getItem("prods")) || [];
 
